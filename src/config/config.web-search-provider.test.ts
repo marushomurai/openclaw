@@ -33,7 +33,7 @@ describe("web search provider config", () => {
         provider: "gemini",
         providerConfig: {
           apiKey: "test-key", // pragma: allowlist secret
-          model: "gemini-2.5-flash",
+          model: "gemini-3.5-flash",
         },
       }),
     );

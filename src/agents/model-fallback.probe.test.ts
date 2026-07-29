@@ -87,7 +87,7 @@ async function expectProbeFailureFallsBack({
       defaults: {
         model: {
           primary: "openai/gpt-4.1-mini",
-          fallbacks: ["anthropic/claude-haiku-3-5", "google/gemini-2-flash"],
+          fallbacks: ["anthropic/claude-haiku-3-5", "google/gemini-3.5-flash"],
         },
       },
     },
@@ -238,7 +238,7 @@ describe("runWithModelFallback – probe logic", () => {
         defaults: {
           model: {
             primary: "openai/gpt-4.1-mini",
-            fallbacks: ["anthropic/claude-haiku-3-5", "google/gemini-2-flash"],
+            fallbacks: ["anthropic/claude-haiku-3-5", "google/gemini-3.5-flash"],
           },
         },
       },

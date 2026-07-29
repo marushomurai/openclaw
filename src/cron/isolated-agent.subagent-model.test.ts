@@ -147,12 +147,12 @@ describe("runCronIsolatedAgentTurn: subagent model resolution (#11461)", () => {
         agents: {
           defaults: {
             model: "anthropic/claude-sonnet-4-5",
-            subagents: { model: { primary: "google/gemini-2.5-flash" } },
+            subagents: { model: { primary: "google/gemini-3.5-flash" } },
           },
         },
       } satisfies Partial<OpenClawConfig>,
       expectedProvider: "google",
-      expectedModel: "gemini-2.5-flash",
+      expectedModel: "gemini-3.5-flash",
     },
   ])("$name", async ({ cfgOverrides, expectedProvider, expectedModel }) => {
     await withTempHome(async (home) => {

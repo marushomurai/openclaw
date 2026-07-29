@@ -67,7 +67,7 @@ describe("applyConfiguredContextWindows", () => {
     // applyConfiguredContextWindows must NOT write "google-gemini-cli/gemini-3.1-pro-preview"
     // into the cache — that keyspace is reserved for raw discovery model IDs and
     // a synthetic write would overwrite unrelated entries (e.g. OpenRouter's
-    // "google/gemini-2.5-pro" being clobbered by a Google provider config).
+    // "google/gemini-3.5-flash" being clobbered by a Google provider config).
     const cache = new Map<string, number>();
     cache.set("google-gemini-cli/gemini-3.1-pro-preview", 1_048_576); // discovery entry
     applyConfiguredContextWindows({

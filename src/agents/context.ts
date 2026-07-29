@@ -248,7 +248,7 @@ function resolveProviderModelRef(params: {
 // directly from config, without going through the shared discovery cache.
 // This avoids the cache keyspace collision where "provider/model" synthetic
 // keys overlap with raw slash-containing model IDs (e.g. OpenRouter's
-// "google/gemini-2.5-pro" stored as a raw catalog entry).
+// "google/gemini-3.5-flash" stored as a raw catalog entry).
 function resolveConfiguredProviderContextWindow(
   cfg: OpenClawConfig | undefined,
   provider: string,
@@ -329,7 +329,7 @@ export function resolveContextTokensForModel(params: {
     }
     // Only do the config direct scan when the caller explicitly passed a
     // provider. When provider is inferred from a slash in the model string
-    // (e.g. "google/gemini-2.5-pro" → ref.provider = "google"), the model ID
+    // (e.g. "google/gemini-3.5-flash" → ref.provider = "google"), the model ID
     // may belong to a DIFFERENT provider (e.g. an OpenRouter session). Scanning
     // cfg.models.providers.google in that case would return Google's configured
     // window and misreport context limits for the OpenRouter session.
@@ -355,8 +355,8 @@ export function resolveContextTokensForModel(params: {
   //
   // Guard: only when params.provider is explicit (not inferred from a slash in
   // the model string). For model-only callers (e.g. status.ts log-usage
-  // fallback with model="google/gemini-2.5-pro"), the inferred provider would
-  // construct "google/gemini-2.5-pro" as the qualified key which accidentally
+  // fallback with model="google/gemini-3.5-flash"), the inferred provider would
+  // construct "google/gemini-3.5-flash" as the qualified key which accidentally
   // matches OpenRouter's raw discovery entry — the bare lookup is correct there.
   if (params.provider && ref && !ref.model.includes("/")) {
     const qualifiedResult = lookupContextTokens(
@@ -368,7 +368,7 @@ export function resolveContextTokensForModel(params: {
   }
 
   // Bare key fallback.  For model-only calls with slash-containing IDs
-  // (e.g. "google/gemini-2.5-pro") this IS the raw discovery cache key.
+  // (e.g. "google/gemini-3.5-flash") this IS the raw discovery cache key.
   const bareResult = lookupContextTokens(params.model);
   if (bareResult !== undefined) {
     return bareResult;

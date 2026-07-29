@@ -204,8 +204,8 @@ which returns AI-synthesized answers backed by live Google Search results with c
         gemini: {
           // API key (optional if GEMINI_API_KEY is set)
           apiKey: "AIza...",
-          // Model (defaults to "gemini-2.5-flash")
-          model: "gemini-2.5-flash",
+          // Model (defaults to "gemini-3.5-flash")
+          model: "gemini-3.5-flash",
         },
       },
     },
@@ -222,7 +222,7 @@ For a gateway install, put it in `~/.openclaw/.env`.
   redirect URLs to direct URLs.
 - Redirect resolution uses the SSRF guard path (HEAD + redirect checks + http/https validation) before returning the final citation URL.
 - Redirect resolution uses strict SSRF defaults, so redirects to private/internal targets are blocked.
-- The default model (`gemini-2.5-flash`) is fast and cost-effective.
+- The default model (`gemini-3.5-flash`) is fast and cost-effective.
   Any Gemini model that supports grounding can be used.
 
 ## web_search

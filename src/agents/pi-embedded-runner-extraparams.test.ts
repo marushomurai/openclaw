@@ -1956,12 +1956,12 @@ describe("applyExtraParamsToAgent", () => {
   it("strips store from payload for non-OpenAI responses providers with supportsStore=false", () => {
     const payload = runResponsesPayloadMutationCase({
       applyProvider: "custom-openai-responses",
-      applyModelId: "gemini-2.5-pro",
+      applyModelId: "gemini-3.5-flash",
       model: {
         api: "openai-responses",
         provider: "custom-openai-responses",
-        id: "gemini-2.5-pro",
-        name: "gemini-2.5-pro",
+        id: "gemini-3.5-flash",
+        name: "gemini-3.5-flash",
         baseUrl: "https://gateway.ai.cloudflare.com/v1/account/gateway/openai",
         reasoning: false,
         input: ["text"],
@@ -1977,12 +1977,12 @@ describe("applyExtraParamsToAgent", () => {
   it("keeps existing context_management when stripping store for supportsStore=false models", () => {
     const payload = runResponsesPayloadMutationCase({
       applyProvider: "custom-openai-responses",
-      applyModelId: "gemini-2.5-pro",
+      applyModelId: "gemini-3.5-flash",
       model: {
         api: "openai-responses",
         provider: "custom-openai-responses",
-        id: "gemini-2.5-pro",
-        name: "gemini-2.5-pro",
+        id: "gemini-3.5-flash",
+        name: "gemini-3.5-flash",
         baseUrl: "https://gateway.ai.cloudflare.com/v1/account/gateway/openai",
         reasoning: false,
         input: ["text"],

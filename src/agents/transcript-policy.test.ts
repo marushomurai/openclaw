@@ -15,7 +15,7 @@ describe("resolveTranscriptPolicy", () => {
   it("enables sanitizeToolCallIds for Google provider", () => {
     const policy = resolveTranscriptPolicy({
       provider: "google",
-      modelId: "gemini-2.0-flash",
+      modelId: "gemini-3.5-flash",
       modelApi: "google-generative-ai",
     });
     expect(policy.sanitizeToolCallIds).toBe(true);
@@ -96,7 +96,7 @@ describe("resolveTranscriptPolicy", () => {
     {
       title: "Google provider",
       provider: "google",
-      modelId: "gemini-2.0-flash",
+      modelId: "gemini-3.5-flash",
       modelApi: "google-generative-ai" as const,
       preserveSignatures: false,
     },
@@ -155,9 +155,9 @@ describe("resolveTranscriptPolicy", () => {
   });
 
   it.each([
-    { provider: "openrouter", modelId: "google/gemini-2.5-pro-preview" },
-    { provider: "opencode", modelId: "google/gemini-2.5-flash" },
-    { provider: "kilocode", modelId: "gemini-2.0-flash" },
+    { provider: "openrouter", modelId: "google/gemini-3.5-flash" },
+    { provider: "opencode", modelId: "google/gemini-3.5-flash" },
+    { provider: "kilocode", modelId: "gemini-3.5-flash" },
   ])("sanitizes Gemini thought signatures for $provider routes", ({ provider, modelId }) => {
     const policy = resolveTranscriptPolicy({
       provider,

@@ -256,7 +256,7 @@ OPENCLAW_LIVE_CLI_BACKEND=1 \
 - OpenAI（非 Codex）：`openai/gpt-5.2`（可选：`openai/gpt-5.1`）
 - OpenAI Codex：`openai-codex/gpt-5.2`（可选：`openai-codex/gpt-5.2-codex`）
 - Anthropic：`anthropic/claude-opus-4-5`（或 `anthropic/claude-sonnet-4-5`）
-- Google（Gemini API）：`google/gemini-3-pro-preview` 和 `google/gemini-3-flash-preview`（避免较旧的 Gemini 2.x 模型）
+- Google（Gemini API）：`google/gemini-3-pro-preview` 和 `google/gemini-3-flash-preview`（避免已弃用的 Gemini 模型）
 - Google（Antigravity）：`google-antigravity/claude-opus-4-6-thinking` 和 `google-antigravity/gemini-3-flash`
 - Z.AI（GLM）：`zai/glm-4.7`
 - MiniMax：`minimax/minimax-m2.1`

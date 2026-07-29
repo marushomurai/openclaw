@@ -1004,7 +1004,7 @@ describe("runWithModelFallback", () => {
           defaults: {
             model: {
               primary: "anthropic/claude-opus-4-6",
-              fallbacks: ["anthropic/claude-sonnet-4-5", "google/gemini-2.5-flash"],
+              fallbacks: ["anthropic/claude-sonnet-4-5", "google/gemini-3.5-flash"],
             },
           },
         },
@@ -1408,7 +1408,7 @@ describe("runWithImageModelFallback", () => {
         defaults: {
           imageModel: {
             primary: "openai/gpt-image-1",
-            fallbacks: ["google/gemini-2.5-flash-image-preview"],
+            fallbacks: ["google/gemini-3.1-flash-image"],
           },
           models: {
             "openai/gpt-image-1": {},
@@ -1429,7 +1429,7 @@ describe("runWithImageModelFallback", () => {
     expect(result.result).toBe("ok");
     expect(run.mock.calls).toEqual([
       ["openai", "gpt-image-1"],
-      ["google", "gemini-2.5-flash-image-preview"],
+      ["google", "gemini-3.1-flash-image"],
     ]);
   });
 });

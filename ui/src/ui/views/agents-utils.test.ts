@@ -12,11 +12,11 @@ describe("resolveEffectiveModelFallbacks", () => {
     const entryModel = undefined;
     const defaultModel = {
       primary: "openai/gpt-5-nano",
-      fallbacks: ["google/gemini-2.0-flash"],
+      fallbacks: ["google/gemini-3.5-flash"],
     };
 
     expect(resolveEffectiveModelFallbacks(entryModel, defaultModel)).toEqual([
-      "google/gemini-2.0-flash",
+      "google/gemini-3.5-flash",
     ]);
   });
 
@@ -27,7 +27,7 @@ describe("resolveEffectiveModelFallbacks", () => {
     };
     const defaultModel = {
       primary: "openai/gpt-5",
-      fallbacks: ["google/gemini-2.0-flash"],
+      fallbacks: ["google/gemini-3.5-flash"],
     };
 
     expect(resolveEffectiveModelFallbacks(entryModel, defaultModel)).toEqual(["openai/gpt-5-nano"]);
@@ -40,7 +40,7 @@ describe("resolveEffectiveModelFallbacks", () => {
     };
     const defaultModel = {
       primary: "openai/gpt-5",
-      fallbacks: ["google/gemini-2.0-flash"],
+      fallbacks: ["google/gemini-3.5-flash"],
     };
 
     expect(resolveEffectiveModelFallbacks(entryModel, defaultModel)).toEqual([]);
@@ -54,7 +54,7 @@ describe("resolveConfiguredCronModelSuggestions", () => {
         defaults: {
           model: {
             primary: "openai/gpt-5.2",
-            fallbacks: ["google/gemini-2.5-pro", "openai/gpt-5.2-mini"],
+            fallbacks: ["google/gemini-3.5-flash", "openai/gpt-5.2-mini"],
           },
           models: {
             "anthropic/claude-sonnet-4-5": { alias: "smart" },
@@ -66,7 +66,7 @@ describe("resolveConfiguredCronModelSuggestions", () => {
             model: { primary: "xai/grok-4", fallbacks: ["openai/gpt-5.2-mini"] },
           },
           planner: {
-            model: "google/gemini-2.5-flash",
+            model: "google/gemini-3.5-flash",
           },
         },
       },
@@ -74,8 +74,8 @@ describe("resolveConfiguredCronModelSuggestions", () => {
 
     expect(result).toEqual([
       "anthropic/claude-sonnet-4-5",
-      "google/gemini-2.5-flash",
-      "google/gemini-2.5-pro",
+      "google/gemini-3.5-flash",
+      "google/gemini-3.5-flash",
       "openai/gpt-5.2",
       "openai/gpt-5.2-mini",
       "xai/grok-4",

@@ -16,7 +16,7 @@ describe("resolveOpencodeZenAlias", () => {
     expect(resolveOpencodeZenAlias("haiku")).toBe("claude-opus-4-6");
     expect(resolveOpencodeZenAlias("gpt4")).toBe("gpt-5.1");
     expect(resolveOpencodeZenAlias("o1")).toBe("gpt-5.2");
-    expect(resolveOpencodeZenAlias("gemini-2.5")).toBe("gemini-3-pro");
+    expect(resolveOpencodeZenAlias("gemini")).toBe("gemini-3.5-flash");
   });
 
   it("resolves gpt5 alias", () => {
@@ -24,7 +24,7 @@ describe("resolveOpencodeZenAlias", () => {
   });
 
   it("resolves gemini alias", () => {
-    expect(resolveOpencodeZenAlias("gemini")).toBe("gemini-3-pro");
+    expect(resolveOpencodeZenAlias("gemini")).toBe("gemini-3.5-flash");
   });
 
   it("returns input if no alias exists", () => {
@@ -87,7 +87,7 @@ describe("OPENCODE_ZEN_MODEL_ALIASES", () => {
     expect(OPENCODE_ZEN_MODEL_ALIASES.opus).toBe("claude-opus-4-6");
     expect(OPENCODE_ZEN_MODEL_ALIASES.codex).toBe("gpt-5.1-codex");
     expect(OPENCODE_ZEN_MODEL_ALIASES.gpt5).toBe("gpt-5.2");
-    expect(OPENCODE_ZEN_MODEL_ALIASES.gemini).toBe("gemini-3-pro");
+    expect(OPENCODE_ZEN_MODEL_ALIASES.gemini).toBe("gemini-3.5-flash");
     expect(OPENCODE_ZEN_MODEL_ALIASES.glm).toBe("glm-4.7");
     expect(OPENCODE_ZEN_MODEL_ALIASES["opus-4.5"]).toBe("claude-opus-4-5");
 
@@ -96,6 +96,6 @@ describe("OPENCODE_ZEN_MODEL_ALIASES", () => {
     expect(OPENCODE_ZEN_MODEL_ALIASES.haiku).toBe("claude-opus-4-6");
     expect(OPENCODE_ZEN_MODEL_ALIASES.gpt4).toBe("gpt-5.1");
     expect(OPENCODE_ZEN_MODEL_ALIASES.o1).toBe("gpt-5.2");
-    expect(OPENCODE_ZEN_MODEL_ALIASES["gemini-2.5"]).toBe("gemini-3-pro");
+    expect(OPENCODE_ZEN_MODEL_ALIASES["gemini-3.5-flash"]).toBe("gemini-3.5-flash");
   });
 });

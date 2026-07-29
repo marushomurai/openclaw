@@ -32,7 +32,7 @@ describe("provider-usage.load", () => {
       if (url.includes("cloudcode-pa.googleapis.com/v1internal:fetchAvailableModels")) {
         return makeResponse(200, {
           models: {
-            "gemini-2.5-pro": {
+            "gemini-3.5-flash": {
               quotaInfo: { remainingFraction: 0.4, resetTime: "2026-01-08T01:00:00Z" },
             },
           },
@@ -40,7 +40,7 @@ describe("provider-usage.load", () => {
       }
       if (url.includes("cloudcode-pa.googleapis.com/v1internal:retrieveUserQuota")) {
         return makeResponse(200, {
-          buckets: [{ modelId: "gemini-2.5-pro", remainingFraction: 0.6 }],
+          buckets: [{ modelId: "gemini-3.5-flash", remainingFraction: 0.6 }],
         });
       }
       if (url.includes("chatgpt.com/backend-api/wham/usage")) {

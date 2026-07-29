@@ -809,8 +809,8 @@ describe("normalizeModelSelection", () => {
   });
 
   it("extracts primary from object", () => {
-    expect(normalizeModelSelection({ primary: "google/gemini-2.5-flash" })).toBe(
-      "google/gemini-2.5-flash",
+    expect(normalizeModelSelection({ primary: "google/gemini-3.5-flash" })).toBe(
+      "google/gemini-3.5-flash",
     );
   });
 

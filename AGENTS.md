@@ -332,3 +332,53 @@
   - `node --import tsx scripts/release-check.ts`
   - `pnpm release:check`
   - `pnpm test:install:smoke` or `OPENCLAW_INSTALL_SMOKE_SKIP_NONROOT=1 pnpm test:install:smoke` for non-root smoke path.
+
+<!-- BEGIN PROJECT-AI-RULES -->
+
+## AI Implementation Notes
+
+For non-trivial implementation tasks, keep append-only implementation notes for the project owner.
+
+Use notes when:
+
+- adding or changing product behavior
+- touching auth, permissions, billing, data, external APIs, deployment, scheduled jobs, or automation
+- changing multiple files
+- making decisions not explicitly specified by the user
+- accepting tradeoffs that affect user-visible behavior, business flow, data, risk, or verification
+
+Write notes for a non-engineer project owner. Avoid code-only explanations. Record important decisions, not every small edit.
+
+Temporary notes go in:
+
+```text
+.agent/implementation-notes.md
+```
+
+Durable decisions go in:
+
+```text
+docs/implementation-notes/YYYY-MM-DD-topic.md
+```
+
+Each note should include:
+
+- Decision: what was decided
+- Reason: why it was decided
+- User Impact: what behavior, workflow, data, or operation may change
+- Risk: what could break or surprise the owner
+- Verification: what was tested, or what was not tested
+- Open Questions: what still needs confirmation
+- Review Prompt: what another LLM should double-check
+
+Do not rewrite earlier note entries. Append corrections or updates.
+
+At completion:
+
+- summarize important notes in the final response
+- remove temporary notes if they are not useful long-term
+- move durable product or architecture decisions to `docs/implementation-notes/`
+
+Policy source: `~/丸昇村井/wiki/ai-development/ai-implementation-notes-standard.md`.
+
+<!-- END PROJECT-AI-RULES -->

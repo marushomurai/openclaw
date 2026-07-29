@@ -67,19 +67,19 @@ describe("resolveProviderCapabilities", () => {
     expect(
       shouldSanitizeGeminiThoughtSignaturesForModel({
         provider: "openrouter",
-        modelId: "google/gemini-2.5-pro-preview",
+        modelId: "google/gemini-3.5-flash",
       }),
     ).toBe(true);
     expect(
       shouldSanitizeGeminiThoughtSignaturesForModel({
         provider: "kilocode",
-        modelId: "gemini-2.0-flash",
+        modelId: "gemini-3.5-flash",
       }),
     ).toBe(true);
     expect(
       shouldSanitizeGeminiThoughtSignaturesForModel({
         provider: "opencode-go",
-        modelId: "google/gemini-2.5-pro-preview",
+        modelId: "google/gemini-3.5-flash",
       }),
     ).toBe(true);
     expect(resolveTranscriptToolCallIdMode("mistral", "mistral-large-latest")).toBe("strict9");

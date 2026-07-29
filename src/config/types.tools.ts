@@ -476,7 +476,7 @@ export type ToolsConfig = {
       gemini?: {
         /** Gemini API key (defaults to GEMINI_API_KEY env var). */
         apiKey?: SecretInput;
-        /** Model to use for grounded search (defaults to "gemini-2.5-flash"). */
+        /** Model to use for grounded search (defaults to "gemini-3.5-flash"). */
         model?: string;
       };
       /** Grok-specific configuration (used when provider="grok"). */

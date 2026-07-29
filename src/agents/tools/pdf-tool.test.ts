@@ -90,7 +90,7 @@ function makeGeminiAnalyzeParams(
 ) {
   return {
     apiKey: "test-key", // pragma: allowlist secret
-    modelId: "gemini-2.5-pro",
+    modelId: "gemini-3.5-flash",
     prompt: "test",
     pdfs: [TEST_PDF_INPUT],
     ...overrides,
@@ -612,7 +612,7 @@ describe("native PDF provider API calls", () => {
 
     const result = await geminiAnalyzePdf({
       ...makeGeminiAnalyzeParams({
-        modelId: "gemini-2.5-pro",
+        modelId: "gemini-3.5-flash",
         prompt: "Summarize this",
       }),
     });
@@ -621,7 +621,7 @@ describe("native PDF provider API calls", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
     const [url, opts] = fetchMock.mock.calls[0];
     expect(url).toContain("generateContent");
-    expect(url).toContain("gemini-2.5-pro");
+    expect(url).toContain("gemini-3.5-flash");
     const body = JSON.parse(opts.body);
     expect(body.contents[0].parts).toHaveLength(2);
     expect(body.contents[0].parts[0].inline_data.mime_type).toBe("application/pdf");
@@ -750,14 +750,14 @@ describe("pdf-tool.helpers", () => {
         defaults: {
           pdfModel: {
             primary: "anthropic/claude-opus-4-6",
-            fallbacks: ["google/gemini-2.5-pro"],
+            fallbacks: ["google/gemini-3.5-flash"],
           },
         },
       },
     };
     expect(coercePdfModelConfig(cfg)).toEqual({
       primary: "anthropic/claude-opus-4-6",
-      fallbacks: ["google/gemini-2.5-pro"],
+      fallbacks: ["google/gemini-3.5-flash"],
     });
   });
 
@@ -778,7 +778,7 @@ describe("pdf-tool.helpers", () => {
     expect(() =>
       coercePdfAssistantText({
         provider: "google",
-        model: "gemini-2.5-pro",
+        model: "gemini-3.5-flash",
         message: {
           role: "assistant",
           stopReason: "error",
@@ -786,7 +786,7 @@ describe("pdf-tool.helpers", () => {
           content: [],
         } as never,
       }),
-    ).toThrow("PDF model failed (google/gemini-2.5-pro): bad request");
+    ).toThrow("PDF model failed (google/gemini-3.5-flash): bad request");
   });
 });
 

@@ -196,25 +196,25 @@ describe("lookupContextTokens", () => {
   it("resolveContextTokensForModel: config direct scan prevents OpenRouter qualified key collision for Google provider", async () => {
     // When provider is explicitly "google" and cfg has a Google contextWindow
     // override, the config direct scan returns it before any cache lookup —
-    // so the OpenRouter raw "google/gemini-2.5-pro" qualified entry is never hit.
+    // so the OpenRouter raw "google/gemini-3.5-flash" qualified entry is never hit.
     // Real callers (status.summary.ts) always pass cfg when provider is explicit.
-    mockDiscoveryDeps([{ id: "google/gemini-2.5-pro", contextWindow: 999_000 }]);
+    mockDiscoveryDeps([{ id: "google/gemini-3.5-flash", contextWindow: 999_000 }]);
 
-    const cfg = createContextOverrideConfig("google", "gemini-2.5-pro", 2_000_000);
+    const cfg = createContextOverrideConfig("google", "gemini-3.5-flash", 2_000_000);
     const resolveContextTokensForModel = await importResolveContextTokensForModel();
 
     // Google with explicit cfg: config direct scan wins before any cache lookup.
     const googleResult = resolveContextTokensForModel({
       cfg: cfg as never,
       provider: "google",
-      model: "gemini-2.5-pro",
+      model: "gemini-3.5-flash",
     });
     expect(googleResult).toBe(2_000_000);
 
     // OpenRouter provider with slash model id: bare lookup finds the raw entry.
     const openrouterResult = resolveContextTokensForModel({
       provider: "openrouter",
-      model: "google/gemini-2.5-pro",
+      model: "google/gemini-3.5-flash",
     });
     expect(openrouterResult).toBe(999_000);
   });
@@ -256,20 +256,20 @@ describe("lookupContextTokens", () => {
 
   it("resolveContextTokensForModel(model-only) does not apply config scan for inferred provider", async () => {
     // status.ts log-usage fallback calls resolveContextTokensForModel({ model })
-    // with no provider. When model = "google/gemini-2.5-pro" (OpenRouter ID),
+    // with no provider. When model = "google/gemini-3.5-flash" (OpenRouter ID),
     // resolveProviderModelRef infers provider="google". Without the guard,
     // resolveConfiguredProviderContextWindow would return Google's configured
     // window and misreport context limits for the OpenRouter session.
-    mockDiscoveryDeps([{ id: "google/gemini-2.5-pro", contextWindow: 999_000 }]);
+    mockDiscoveryDeps([{ id: "google/gemini-3.5-flash", contextWindow: 999_000 }]);
 
-    const cfg = createContextOverrideConfig("google", "gemini-2.5-pro", 2_000_000);
+    const cfg = createContextOverrideConfig("google", "gemini-3.5-flash", 2_000_000);
     const resolveContextTokensForModel = await importResolveContextTokensForModel();
 
     // model-only call (no explicit provider) must NOT apply config direct scan.
-    // Falls through to bare cache lookup: "google/gemini-2.5-pro" → 999k ✓.
+    // Falls through to bare cache lookup: "google/gemini-3.5-flash" → 999k ✓.
     const modelOnlyResult = resolveContextTokensForModel({
       cfg: cfg as never,
-      model: "google/gemini-2.5-pro",
+      model: "google/gemini-3.5-flash",
       // no provider
     });
     expect(modelOnlyResult).toBe(999_000);
@@ -278,7 +278,7 @@ describe("lookupContextTokens", () => {
     const explicitResult = resolveContextTokensForModel({
       cfg: cfg as never,
       provider: "google",
-      model: "gemini-2.5-pro",
+      model: "gemini-3.5-flash",
     });
     expect(explicitResult).toBe(2_000_000);
   });
