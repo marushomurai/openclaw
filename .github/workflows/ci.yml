@@ -1,5 +1,6 @@
 name: CI
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
   workflow_dispatch:
     inputs:
@@ -18,15 +19,6 @@ on:
         required: false
         default: false
         type: boolean
-  push:
-    branches: [main]
-    paths-ignore:
-      - "**/*.md"
-      - "docs/**"
-  pull_request:
-    types: [opened, reopened, synchronize, ready_for_review, converted_to_draft]
-    paths-ignore:
-      - "CHANGELOG.md"
 
 permissions:
   contents: read

@@ -1,13 +1,7 @@
 name: Workflow Sanity
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  pull_request:
-    paths-ignore:
-      - "CHANGELOG.md"
-  push:
-    branches: [main]
-    paths-ignore:
-      - "CHANGELOG.md"
   workflow_dispatch:
 
 permissions:

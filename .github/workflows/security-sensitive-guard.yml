@@ -1,8 +1,8 @@
 name: Security Sensitive Guard
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  pull_request_target: # zizmor: ignore[dangerous-triggers] checks trusted base script only; never checks out PR head
-    types: [opened, reopened, synchronize, ready_for_review]
+  workflow_dispatch:
 
 permissions:
   contents: read

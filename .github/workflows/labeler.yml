@@ -1,10 +1,7 @@
 name: Labeler
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  pull_request_target: # zizmor: ignore[dangerous-triggers] maintainer-owned triage workflow; no untrusted checkout or PR code execution
-    types: [opened, synchronize, reopened, edited]
-  issues:
-    types: [opened, edited]
   workflow_dispatch:
     inputs:
       max_prs:

@@ -1,16 +1,7 @@
 name: Docker Release
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  push:
-    tags:
-      - "v*"
-      - "!v*-alpha.*"
-    paths-ignore:
-      - "docs/**"
-      - "**/*.md"
-      - "**/*.mdx"
-      - ".agents/**"
-      - "skills/**"
   workflow_dispatch:
     inputs:
       tag:

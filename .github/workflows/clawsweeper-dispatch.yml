@@ -1,18 +1,8 @@
 name: ClawSweeper Dispatch
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  issues:
-    types: [opened, reopened, edited, labeled, unlabeled]
-  issue_comment:
-    types: [created, edited]
-  push:
-    branches: [main]
-  pull_request_target: # zizmor: ignore[dangerous-triggers] maintainer-owned external dispatch; no checkout or untrusted PR code execution
-    types: [opened, reopened, synchronize, ready_for_review, edited, labeled, unlabeled]
-  pull_request_review:
-    types: [submitted, edited, dismissed]
-  pull_request_review_comment:
-    types: [created, edited]
+  workflow_dispatch:
 
 permissions:
   contents: read
