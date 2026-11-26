@@ -1,8 +1,7 @@
 name: Install Smoke
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  schedule:
-    - cron: "17 3 * * *"
   workflow_dispatch:
     inputs:
       run_bun_global_install_smoke:

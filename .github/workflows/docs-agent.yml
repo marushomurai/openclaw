@@ -1,11 +1,7 @@
 name: Docs Agent
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  workflow_run: # zizmor: ignore[dangerous-triggers] main-only docs repair after trusted CI; job gates repository, event, branch, actor, conclusion, exact current main SHA, and hourly cadence before using write token
-    workflows:
-      - CI
-    types:
-      - completed
   workflow_dispatch:
 
 permissions:

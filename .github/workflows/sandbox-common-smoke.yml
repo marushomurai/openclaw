@@ -1,18 +1,8 @@
 name: Sandbox Common Smoke
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  push:
-    branches: [main]
-    paths:
-      - scripts/docker/sandbox/Dockerfile
-      - scripts/docker/sandbox/Dockerfile.common
-      - scripts/sandbox-common-setup.sh
-  pull_request:
-    types: [opened, reopened, synchronize, ready_for_review, converted_to_draft]
-    paths:
-      - scripts/docker/sandbox/Dockerfile
-      - scripts/docker/sandbox/Dockerfile.common
-      - scripts/sandbox-common-setup.sh
+  workflow_dispatch:
 
 permissions:
   contents: read

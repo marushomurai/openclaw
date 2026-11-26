@@ -1,9 +1,8 @@
 name: CodeQL macOS Critical Security
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 8 * * 1"
 
 concurrency:
   group: codeql-macos-critical-security-${{ github.workflow }}-${{ github.event_name == 'workflow_dispatch' && format('manual-{0}', github.run_id) || format('ref-{0}', github.ref) }}

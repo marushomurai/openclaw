@@ -1,13 +1,7 @@
 name: Docs Sync Publish Repo
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - docs/**
-      - scripts/docs-sync-publish.mjs
-      - .github/workflows/docs-sync-publish.yml
   workflow_dispatch:
 
 permissions:

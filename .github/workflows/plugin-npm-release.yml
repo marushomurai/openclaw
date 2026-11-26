@@ -1,19 +1,7 @@
 name: Plugin NPM Release
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/plugin-npm-release.yml"
-      - "extensions/**"
-      - "package.json"
-      - "scripts/lib/plugin-npm-package-manifest.mjs"
-      - "scripts/lib/plugin-npm-release.ts"
-      - "scripts/plugin-npm-publish.sh"
-      - "scripts/plugin-npm-release-check.ts"
-      - "scripts/plugin-npm-release-plan.ts"
-      - "scripts/verify-plugin-npm-published-runtime.mjs"
   workflow_dispatch:
     inputs:
       publish_scope:

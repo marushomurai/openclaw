@@ -1,9 +1,8 @@
 name: iOS Periphery Dead Code Comment
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  workflow_run: # zizmor: ignore[dangerous-triggers] trusted PR commenter; job gates repository, source event, workflow name, live open PR, and exact current head before reading artifacts or writing comments
-    workflows: ["iOS Periphery Dead Code"]
-    types: [completed]
+  workflow_dispatch:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"

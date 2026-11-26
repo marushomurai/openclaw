@@ -1,4 +1,5 @@
 name: Blacksmith Testbox
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
   workflow_dispatch:
     inputs:
@@ -10,9 +11,6 @@ on:
         type: number
         description: "Maximum GitHub job runtime for long Testbox commands"
         default: 120
-  pull_request:
-    paths:
-      - ".github/workflows/**"
 
 permissions:
   contents: read

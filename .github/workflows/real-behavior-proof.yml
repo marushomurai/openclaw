@@ -1,8 +1,8 @@
 name: Real behavior proof
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  pull_request_target: # zizmor: ignore[dangerous-triggers] trusted base checkout only; no untrusted PR code execution
-    types: [opened, edited, synchronize, reopened, ready_for_review, labeled, unlabeled]
+  workflow_dispatch:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"

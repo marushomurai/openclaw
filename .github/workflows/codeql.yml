@@ -1,5 +1,6 @@
 name: CodeQL
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
   workflow_dispatch:
     inputs:
@@ -11,25 +12,6 @@ on:
         options:
           - all
           - security
-  pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
-    paths:
-      - ".github/actions/**"
-      - ".github/codeql/**"
-      - ".github/workflows/**"
-      - "packages/**"
-      - "src/**"
-  push:
-    branches:
-      - main
-    paths:
-      - ".github/actions/**"
-      - ".github/codeql/**"
-      - ".github/workflows/**"
-      - "packages/**"
-      - "src/**"
-  schedule:
-    - cron: "0 6 * * *"
 
 concurrency:
   group: codeql-${{ github.workflow }}-${{ github.event_name == 'workflow_dispatch' && format('manual-{0}', github.run_id) || github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || format('ref-{0}', github.ref) }}

@@ -1,22 +1,7 @@
 name: Control UI Locale Refresh
 
+# push・PR・定時・コメント等では起動しない（GitHub Actions を自動で使わない、MAR-2740）。手動の入口だけ残す。
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - ui/src/i18n/locales/en.ts
-      - ui/src/i18n/locales/*.ts
-      - ui/src/i18n/.i18n/*
-      - ui/src/i18n/lib/types.ts
-      - ui/src/i18n/lib/registry.ts
-      - scripts/control-ui-i18n.ts
-      - .github/workflows/control-ui-locale-refresh.yml
-  release:
-    types:
-      - published
-  schedule:
-    - cron: "23 4 * * *"
   workflow_dispatch:
 
 permissions:
